@@ -12,6 +12,7 @@ body {
   height: 100vh;
   background-color: #eae7dc;
   color: #82817f;
+  letter-spacing: 1px;
 }
 
 .home {
@@ -128,4 +129,8 @@ body {
       }
     }
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
