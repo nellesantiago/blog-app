@@ -1,29 +1,18 @@
 <%= form_with(model: entry) do |form| %>
   <% if entry.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
-
-      <ul>
         <% entry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <div><%= error.full_message %></div>
         <% end %>
-      </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "Title" %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user %>
-    <%= form.text_field :user %>
+    <%= form.text_area :content, placeholder: "What's on your mind?" %>
   </div>
 
   <div class="actions">
