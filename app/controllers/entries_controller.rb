@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!, except: %i[home]
   before_action :set_entry, only: %i[ show edit update destroy ]
 
   def home
