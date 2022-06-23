@@ -1,6 +1,9 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: %i[ show edit update destroy ]
 
+  def home
+  end
+
   # GET /entries or /entries.json
   def index
     @entries = Entry.all
