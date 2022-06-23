@@ -5,25 +5,20 @@ class EntriesController < ApplicationController
   def home
   end
 
-  # GET /entries or /entries.json
   def index
     @entries = current_user.entries
   end
 
-  # GET /entries/1 or /entries/1.json
   def show
   end
 
-  # GET /entries/new
   def new
     @entry = current_user.entries.build
   end
 
-  # GET /entries/1/edit
   def edit
   end
 
-  # POST /entries or /entries.json
   def create
     @entry = current_user.entries.build(entry_params)
 
@@ -38,7 +33,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /entries/1 or /entries/1.json
   def update
     respond_to do |format|
       if @entry.update(entry_params)
@@ -51,7 +45,6 @@ class EntriesController < ApplicationController
     end
   end
 
-  # DELETE /entries/1 or /entries/1.json
   def destroy
     @entry.destroy
 
@@ -62,12 +55,10 @@ class EntriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_entry
       @entry = current_user.entries.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def entry_params
       params.require(:entry).permit(:title, :content)
     end
