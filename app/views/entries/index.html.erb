@@ -35,7 +35,7 @@
         <%= image_tag "write.png" %></div>
       <% else %>
         <div class="entry">
-          <% @entries.each do |entry| %>
+          <% @entries.order(created_at: :desc).each do |entry| %>
             <div class="list">
               <div class="entry-title"><i class="fa-solid fa-list"></i><%= entry.title %></div>
               <div class="created-at">
