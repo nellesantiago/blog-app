@@ -43,13 +43,13 @@
                 <%= entry.created_at.strftime("%b %d, %Y") %>
               </div>
               <div class="options">
-                <%= link_to entry do %>
+                <%= link_to entry, class: "book" do %>
                   <i class="fa-solid fa-book-open"></i>
                 <% end %>
-                <%= link_to edit_entry_path(entry) do %>
+                <%= link_to edit_entry_path(entry), class: "pen" do %>
                   <i class="fa-solid fa-pen-to-square"></i>
                 <% end %>
-                <%= link_to entry, method: :delete, data: {confirm: "Are you sure?"} do %>
+                <%= link_to entry, method: :delete, data: {confirm: "Are you sure?"}, class: "trash" do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>

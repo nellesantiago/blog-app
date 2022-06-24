@@ -2,46 +2,47 @@ require "application_system_test_case"
 
 class EntriesTest < ApplicationSystemTestCase
   setup do
-    @entry = entries(:one)
+    @entry = entries(:entry)
+    @user = users(:user)
+    sign_in @user
+    visit entries_url
   end
 
   test "visiting the index" do
-    visit entries_url
-    assert_selector "h1", text: "Entries"
+    assert_text "Title"
   end
 
-  test "creating a Entry" do
-    visit entries_url
-    click_on "New Entry"
+  test "creating an entry" do
+    click_on(class: "add")
 
-    fill_in "Content", with: @entry.content
-    fill_in "Title", with: @entry.title
-    fill_in "User", with: @entry.user
+    fill_in "entry[title]", with: "Subject"
+    fill_in "entry[content]", with: "New Content"
     click_on "Create Entry"
 
-    assert_text "Entry was successfully created"
-    click_on "Back"
+    assert_text "Subject"
   end
 
-  test "updating a Entry" do
-    visit entries_url
-    click_on "Edit", match: :first
+  test "view an entry" do
+    click_on(class: "book")
 
-    fill_in "Content", with: @entry.content
-    fill_in "Title", with: @entry.title
-    fill_in "User", with: @entry.user
+    assert_text "Edit"
+  end
+
+  test "updating an entry" do
+    click_on(class: "pen")
+
+    fill_in "entry[content]", with: @entry.content
+    fill_in "entry[title]", with: @entry.title
     click_on "Update Entry"
 
-    assert_text "Entry was successfully updated"
-    click_on "Back"
+    assert_text "Title"
   end
 
-  test "destroying a Entry" do
-    visit entries_url
+  test "deleting an entry" do
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on(class: "trash")
     end
 
-    assert_text "Entry was successfully destroyed"
+    assert_text "+ Add New"
   end
 end
