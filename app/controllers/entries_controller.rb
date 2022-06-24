@@ -22,36 +22,27 @@ class EntriesController < ApplicationController
   def create
     @entry = current_user.entries.build(entry_params)
 
-    respond_to do |format|
       if @entry.save
-        format.html { redirect_to entries_url(@entry), notice: "Entry was successfully created." }
-        format.json { render :show, status: :created, location: @entry }
+        redirect_to entries_url(@entry), notice: "Entry was successfully created." 
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
+        render :new
     end
   end
 
   def update
-    respond_to do |format|
+    
       if @entry.update(entry_params)
-        format.html { redirect_to entries_url(@entry), notice: "Entry was successfully updated." }
-        format.json { render :show, status: :ok, location: @entry }
+         redirect_to entries_url(@entry), notice: "Entry was successfully updated." 
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
+        render :edit
     end
   end
 
   def destroy
     @entry.destroy
 
-    respond_to do |format|
-      format.html { redirect_to entries_url, notice: "Entry was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    
+      redirect_to entries_url, notice: "Entry was successfully deleted."
   end
 
   private
