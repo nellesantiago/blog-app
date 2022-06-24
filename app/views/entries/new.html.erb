@@ -1,5 +1,27 @@
-<h1>New Entry</h1>
-
-<%= render 'form', entry: @entry %>
-
-<%= link_to 'Back', entries_path %>
+<div class="modal">
+  <nav>
+    <div class="title">
+      <i class="fa-solid fa-feather-pointed"></i>
+      Dear<span>Diary</span>
+    </div>
+    <ul>
+      <li><i class="fa-solid fa-user-tie"></i>
+        <%= current_user.email %>
+      </li>
+      <li><%= link_to destroy_user_session_path, method: :delete, class: "log-out" do %>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <% end %></li>
+    </ul>
+  </nav>
+  <div class="overlay">
+    <div class="container">
+        <div class="title">
+            <div class="name">New Entry</div>
+            <%= link_to 'x', entries_path, class: "close" %>
+        </div>
+      <div class="form">
+        <%= render 'form', entry: @entry %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @entry.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @entry.content %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @entry.user %>
-</p>
-
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+<div class="modal">
+  <nav>
+    <div class="title">
+      <i class="fa-solid fa-feather-pointed"></i>
+      Dear<span>Diary</span>
+    </div>
+    <ul>
+      <li><i class="fa-solid fa-user-tie"></i>
+        <%= current_user.email %>
+      </li>
+      <li><%= link_to destroy_user_session_path, method: :delete, class: "log-out" do %>
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <% end %></li>
+    </ul>
+  </nav>
+  <div class="overlay">
+    <div class="container">
+      <div class="title">
+        <div class="name"><i class="fa-solid fa-calendar"></i><%= @entry.created_at.strftime("%b %d, %Y")%></div>
+        <%= link_to 'x', entries_path, class: "close" %>
+      </div>
+      <div class="form">
+        <div class="entry-title a">
+          <%= @entry.title %>
+        </div>
+        <div class="content a">
+          <%= @entry.content %>
+        </div>
+        <%= link_to 'Edit', edit_entry_path(@entry) %>
+      </div>
+    </div>
+  </div>
+</div>
