@@ -22,5 +22,5 @@
 
 >> ###### Sources:
 >> - Heartcombo's [Devise Tutorial](https://github.com/heartcombo/devise)
->> - Line Art Images: [PNG tree](https://pngtree.com)
+>> - Line Art Images: [PNG Tree](https://pngtree.com)
 >> - Ruby on Rails's [Guides](https://guides.rubyonrails.org/v6.1/)
